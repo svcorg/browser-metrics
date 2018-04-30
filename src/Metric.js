@@ -6,11 +6,11 @@ const start = new WeakMap();
 const end = new WeakMap();
 
 function supportsPerfNow() {
-  return typeof self !== 'undefined' && self.performance && self.performance.now;
+  return typeof window !== 'undefined' && window.performance && window.performance.now;
 }
 
 function supportsPerfMark() {
-  return typeof self !== 'undefined' && self.performance && self.performance.mark;
+  return typeof window !== 'undefined' && window.performance && window.performance.mark;
 }
 
 /**
@@ -36,9 +36,9 @@ class Metric {
     if (supportsPerfMark()) {
       // Note: this assumes the user has made only one measurement for the given
       // name. Return the first one found.
-      const entry = self.performance.getEntriesByName(this.name)[0];
+      const entry = window.performance.getEntriesByName(this.name)[0];
       if (entry && entry.entryType !== 'measure') {
-        duration = entry.duration;
+        ({ duration } = entry);
       }
     }
 
@@ -67,12 +67,12 @@ class Metric {
     }
 
     if (supportsPerfNow()) {
-      start.set(this, self.performance.now());
+      start.set(this, window.performance.now());
     }
 
     // Support: developer.mozilla.org/en-US/docs/Web/API/Performance/mark
     if (supportsPerfMark()) {
-      self.performance.mark(`mark_${this.name}_start`);
+      window.performance.mark(`mark_${this.name}_start`);
     }
 
     return this;
@@ -89,15 +89,15 @@ class Metric {
     }
 
     if (supportsPerfNow()) {
-      end.set(this, self.performance.now());
+      end.set(this, window.performance.now());
     }
 
     // Support: developer.mozilla.org/en-US/docs/Web/API/Performance/mark
     if (supportsPerfMark()) {
       const startMark = `mark_${this.name}_start`;
       const endMark = `mark_${this.name}_end`;
-      self.performance.mark(endMark);
-      self.performance.measure(this.name, startMark, endMark);
+      window.performance.mark(endMark);
+      window.performance.measure(this.name, startMark, endMark);
     }
 
     return this;

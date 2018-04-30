@@ -8,7 +8,7 @@ const factory = (options = {}) => {
     minDuration = 50, // ms
   } = options;
 
-  const metricsMiddleware = () => (next) => (action) => {
+  return () => (next) => (action) => {
     const metric = new Metric(action.type);
 
     metric.start();
@@ -23,8 +23,6 @@ const factory = (options = {}) => {
 
     return result;
   };
-
-  return metricsMiddleware;
 };
 
 export default factory;

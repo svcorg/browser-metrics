@@ -1,6 +1,6 @@
 {
-  "name": "browser-metrics",
-  "version": "0.1.4",
+  "name": "@svc/browser-metrics",
+  "version": "0.2.0",
   "description": "A collection of metrics tools for measuring performance",
   "main": "lib/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oliviertassinari/pwa-metrics.git"
+    "url": "git+https://github.com/svcorg/browser-metrics.git"
   },
   "keywords": [
     "metrics",
@@ -21,31 +21,31 @@
     "browser",
     "redux"
   ],
-  "author": "Olivier Tassinari <olivier.tassinari@gmail.com> (https://github.com/oliviertassinari)",
+  "author": "Chaitanya <gangaraju4u@gmail.com> (https://github.com/kamthamc)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oliviertassinari/pwa-metrics/issues"
+    "url": "https://github.com/svcorg/browser-metrics/issues"
   },
-  "homepage": "https://github.com/oliviertassinari/pwa-metrics#readme",
+  "homepage": "https://github.com/svcorg/browser-metrics#readme",
   "dependencies": {
     "warning": "^3.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-transform-dev-warning": "^0.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-dev-warning": "^0.1.1",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
-    "eslint": "^3.11.0",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-babel": "^4.0.0",
-    "eslint-plugin-flowtype": "^2.25.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-mocha": "^4.7.0",
-    "eslint-plugin-react": "^6.7.1",
-    "flow-bin": "^0.36.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-mocha": "^5.0.0",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.71.0",
     "pkgfiles": "^2.3.0"
   }
 }

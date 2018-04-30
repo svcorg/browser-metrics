@@ -1,18 +1,17 @@
 # browser-metrics
 
+Forked from: https://github.com/oliviertassinari/browser-metrics
+
 > A collection of metrics tools for measuring performance.
 
-[![npm version](https://img.shields.io/npm/v/browser-metrics.svg?style=flat-square)](https://www.npmjs.com/package/browser-metrics)
-[![npm downloads](https://img.shields.io/npm/dm/browser-metrics.svg?style=flat-square)](https://www.npmjs.com/package/browser-metrics)
-[![Build Status](https://travis-ci.org/oliviertassinari/browser-metrics.svg?branch=master)](https://travis-ci.org/oliviertassinari/browser-metrics)
-
-[![Dependencies](https://img.shields.io/david/oliviertassinari/browser-metrics.svg?style=flat-square)](https://david-dm.org/oliviertassinari/browser-metrics)
-[![DevDependencies](https://img.shields.io/david/dev/oliviertassinari/browser-metrics.svg?style=flat-square)](https://david-dm.org/oliviertassinari/browser-metrics#info=devDependencies&view=list)
+[![npm version](https://img.shields.io/npm/v/@svc/browser-metrics.svg?style=flat-square)](https://www.npmjs.com/package/browser-metrics)
+[![npm downloads](https://img.shields.io/npm/dm/@svc/browser-metrics.svg?style=flat-square)](https://www.npmjs.com/package/browser-metrics)
+[![Build Status](https://travis-ci.org/svcorg/browser-metrics.svg?branch=master)](https://travis-ci.org/oliviertassinari/browser-metrics)
 
 ## Installation
 
 ```sh
-npm install --save-dev browser-metrics
+npm install --save-dev @svc/browser-metrics
 ```
 
 ## The problem solved
@@ -46,7 +45,7 @@ Until research shows otherwise, you should consider the other metrics as simple 
 ### Usage
 
 ```js
-import browsingMetrics from 'browser-metrics/lib/browsingMetrics';
+import browsingMetrics from '@svc/browser-metrics/lib/browsingMetrics';
 import React from 'react';
 
 class App extends React.Component {
@@ -85,11 +84,11 @@ export default App;
 
 ### Browser support
 
-| Metric              | IE    | Edge | Firefox | Chrome | Safari |
-|:--------------------|:------|:-----|:--------|:-------|:-------|
-| `timeToFirstByte`   | >= 10 | ✓    | >= 38   | >= 25  | x      |
-| `timeToFirstPaint`  | >= 10 | ✓    | x       | >= 12  | x      |
-| `timeToInteractive` | >= 10 | ✓    | >= 38   | >= 25  | x      |
+| Metric              | Edge | Firefox | Chrome | Safari |
+|:--------------------|:-----|:--------|:-------|:-------|
+| `timeToFirstByte`   | ✓    | >= 38   | >= 25  | x      |
+| `timeToFirstPaint`  | ✓    | x       | >= 12  | x      |
+| `timeToInteractive` | ✓    | >= 38   | >= 25  | x      |
 
 ## `Metric`
 
@@ -105,7 +104,7 @@ For browsers that support the *mark* API, the transaction also appears in the De
 ### Usage
 
 ```js
-import Metric from 'browser-metrics/lib/Metric';
+import Metric from '@svc/browser-metrics/lib/Metric';
 
 const metric = new Metric('ACCOUNT_DETAIL_FETCH');
 metric.start();
@@ -134,10 +133,10 @@ Call to end a measurement.
 
 ### Browser support
 
-| Feature             | IE    | Edge | Firefox | Chrome | Safari |
-|:--------------------|:------|:-----|:--------|:-------|:-------|
-| `performance.now`   | >= 10 | ✓    | >= 15   | >= 20  | >= 8   |
-| `performance.mark`  | >= 10 | ✓    | >= 41   | >= 43  | x      |
+| Feature             | Edge | Firefox | Chrome | Safari |
+|:--------------------|:-----|:--------|:-------|:-------|
+| `performance.now`   | ✓    | >= 15   | >= 20  | >= 8   |
+| `performance.mark`  | ✓    | >= 41   | >= 43  | x      |
 
 ## `reduxMetricsMiddelware`
 
@@ -155,7 +154,7 @@ When used with [react-redux](https://github.com/reactjs/react-redux) and the cur
 ### Usage
 
 ```js
-import metricsMiddleware from 'browser-metrics/lib/reduxMetricsMiddleware';
+import metricsMiddleware from '@svc/browser-metrics/lib/reduxMetricsMiddleware';
 import { createStore, applyMiddleware } from 'redux';
 const rootReducer = (store) => store;
 

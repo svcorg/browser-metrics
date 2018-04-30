@@ -8,19 +8,13 @@
  */
 
 function supportsPerfNow() {
-  return typeof self !== 'undefined' && self.performance && self.performance.now;
+  return window.performance && window.performance.now;
 }
 
 function supportsPerfTiming() {
-  if (typeof self !== 'undefined' && self.performance && self.performance.timing) {
-    // IE9 bug where navigationStart will be 0 until after the browser updates the
-    // performance.timing data structure.
-    if (self.performance.timing.navigationStart !== 0) {
-      return true;
-    }
-  }
-
-  return false;
+  return !!(window.performance &&
+    window.performance.getEntriesByType('navigation') &&
+    window.performance.getEntriesByType('navigation')[0]);
 }
 
 function getTimeSinceNavigationStart() {
@@ -41,7 +35,7 @@ function getTimeToFirstByte() {
     return null;
   }
 
-  const timing = window.performance.timing;
+  const { timing } = window.performance;
 
   return timing.responseStart - timing.navigationStart;
 }
@@ -52,13 +46,16 @@ function getTimeToFirstByte() {
  * @return {number} The first paint time in ms.
  */
 function getTimeToFirstPaint() {
-  if (window.chrome && window.chrome.loadTimes) {
+  if (performance.getEntriesByType) {
+    const [entry] = performance.getEntriesByType('paint');
+    return (entry.startTime + performance.timeOrigin) * 1000;
+  } else if (window.chrome && window.chrome.loadTimes) {
     const load = window.chrome.loadTimes();
     const firstPaintTime = (load.firstPaintTime - load.startLoadTime) * 1000;
 
     return Math.round(firstPaintTime);
   } else if (supportsPerfTiming()) {
-    const timing = window.performance.timing;
+    const { timing } = window.performance;
 
     // See http://msdn.microsoft.com/ff974719
     if (timing.msFirstPaint) {
