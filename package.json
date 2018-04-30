@@ -21,6 +21,10 @@
     "browser",
     "redux"
   ],
+  "directories": {
+    "lib": "lib",
+    "doc": "docs"
+  },
   "author": "Chaitanya <gangaraju4u@gmail.com> (https://github.com/kamthamc)",
   "license": "MIT",
   "bugs": {
